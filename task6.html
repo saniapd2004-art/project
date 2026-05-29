@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do List</title>
+
+  <style>
+    .completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+  </style>
+</head>
+
+<body>
+
+  <input type="text" id="taskInput" placeholder="Enter task">
+  <button onclick="addTask()">Add Task</button>
+
+  <ul id="taskList"></ul>
+
+  <script>
+    function addTask() {
+      const input = document.getElementById("taskInput");
+      const taskText = input.value;
+
+      if (taskText !== "") {
+        const li = document.createElement("li");
+        li.textContent = taskText;
+
+        // Toggle completed class when clicked
+        li.onclick = function () {
+          li.classList.toggle("completed");
+        };
+
+        document.getElementById("taskList").appendChild(li);
+
+        input.value = "";
+      }
+    }
+  </script>
+
+</body>
+</html>

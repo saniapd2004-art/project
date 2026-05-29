@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do List</title>
+
+  <style>
+    .error {
+      color: red;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <input type="text" id="taskInput" placeholder="Enter task">
+  <button onclick="addTask()">Add Task</button>
+
+  <!-- Error message -->
+  <p id="errorMsg" class="error"></p>
+
+  <ul id="taskList"></ul>
+
+  <script>
+    function addTask() {
+      const input = document.getElementById("taskInput");
+      const taskText = input.value.trim();
+      const errorMsg = document.getElementById("errorMsg");
+
+      // Validation
+      if (taskText === "") {
+        errorMsg.textContent = "Please enter a task!";
+        return;
+      }
+
+      // Clear error message
+      errorMsg.textContent = "";
+
+      // Create list item
+      const li = document.createElement("li");
+      li.textContent = taskText + " ";
+
+      // Create delete button
+      const deleteBtn = document.createElement("button");
+      deleteBtn.textContent = "Delete";
+
+      // Delete task
+      deleteBtn.onclick = function () {
+        li.remove();
+      };
+
+      // Add button to list item
+      li.appendChild(deleteBtn);
+
+      // Add item to list
+      document.getElementById("taskList").appendChild(li);
+
+      // Clear input field
+      input.value = "";
+    }
+  </script>
+
+</body>
+</html>

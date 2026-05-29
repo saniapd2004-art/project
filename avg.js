@@ -13,5 +13,5 @@ function calculateAverage(numbers) {
 }
 
 // Example
-const nums = [10, 20, 30, 40, 50];
+const nums = [10, 20, 3];
 console.log("Average:", calculateAverage(nums));

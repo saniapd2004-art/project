@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple To-Do App</title>
+  <style>
+    body {
+      font-family: Arial;
+      margin: 40px;
+    }
+
+    input {
+      padding: 10px;
+      width: 250px;
+    }
+
+    button {
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+
+    li {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>To-Do List</h2>
+
+  <input type="text" id="taskInput" placeholder="Enter a task">
+  <button onclick="addTask()">Add Task</button>
+
+  <ul id="taskList"></ul>
+
+  <script>
+    function addTask() {
+      const input = document.getElementById("taskInput");
+      const taskText = input.value;
+
+      if (taskText === "") {
+        alert("Please enter a task");
+        return;
+      }
+
+      const li = document.createElement("li");
+      li.textContent = taskText;
+
+      document.getElementById("taskList").appendChild(li);
+
+      input.value = "";
+    }
+  </script>
+
+</body>
+</html>

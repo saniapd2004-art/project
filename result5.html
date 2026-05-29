@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do List</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+    }
+
+    input {
+      padding: 8px;
+      width: 200px;
+    }
+
+    button {
+      padding: 8px 12px;
+      margin-left: 5px;
+      cursor: pointer;
+    }
+
+    li {
+      margin-top: 10px;
+    }
+
+    .completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+
+    #error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>To-Do List</h2>
+
+  <input type="text" id="taskInput" placeholder="Enter a task">
+  
+  <button onclick="addTask()">Add Task</button>
+
+  <p id="error"></p>
+
+  <ul id="taskList"></ul>
+
+  <script>
+    function addTask() {
+
+      const input = document.getElementById("taskInput");
+      const taskText = input.value.trim();
+      const error = document.getElementById("error");
+
+      if (taskText === "") {
+        error.textContent = "Please enter a task!";
+        return;
+      }
+
+      error.textContent = "";
+
+      const li = document.createElement("li");
+
+      const span = document.createElement("span");
+      span.textContent = taskText;
+
+      // Toggle completed style
+      span.onclick = function () {
+        span.classList.toggle("completed");
+      };
+
+      // Delete button
+      const deleteBtn = document.createElement("button");
+      deleteBtn.textContent = "Delete";
+
+      deleteBtn.onclick = function () {
+        li.remove();
+      };
+
+      li.appendChild(span);
+      li.appendChild(deleteBtn);
+
+      document.getElementById("taskList").appendChild(li);
+
+      input.value = "";
+    }
+  </script>
+
+</body>
+</html>
